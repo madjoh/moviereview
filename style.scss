@@ -1,0 +1,190 @@
+*,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.sideleft {
+  background-color: black;
+  width: 60px;
+  height: 100vh;
+  position: fixed; //Här borde det vara fixed; istället för absolute; annars fyller inte blocket sidan.
+  display: flex;
+  justify-content: center;
+
+  .bokstav {
+    // Fixar bokstaven i den svarta sidebaren
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: "Roboto";
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 1000px) {
+    // Ändrar så att menyn hamnar i toppen istället för på vänstra sidan.
+    width: 100vw;
+    height: 50px;
+    justify-content: flex-start;
+    align-items: center;
+    .bokstav {
+      margin: 0;
+      margin-left: 15px;
+    }
+  }
+}
+
+.sideright {
+  // Sätter en position på menyn uppe till höger
+  position: fixed;
+  top: 30px;
+  right: 30px;
+
+  @media (max-width: 1000px) {
+    color: white;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+
+  header { // Sätter så att bilden skalas utifrån mot mitten
+    height: 260px;
+    width: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: 932px) { // sätter margin så att sidan inte går ut i kanterna när den blir för liten
+    > *:not(header) {
+      margin: 0 2rem 0 2rem;
+    }
+  }
+
+  nav { // Gör så att menyn flexar och gör så att innehållet blir jämnt fördelat
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+      font-family: "Roboto condensed";
+      font-size: 14px;
+
+      &.bold {
+        font-weight: 700;
+      }
+      &.light {
+        font-weight: 400;
+      }
+    }
+  }
+
+  section {// behållare för rubriken
+    min-height: 370px;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid black;
+
+    @media (max-width: 768px) {
+      border-bottom: 2px solid black;
+    }
+    h1 {
+      font-family: Georgia;
+      font-size: 6.25rem;
+      letter-spacing: 2px;
+
+      @media (max-width: 768px) { // När skärmstorleken minskas till 768px ändras fontstorleken.
+        font-size: 5rem;
+      }
+
+      @media (max-width: 480px) { // När skärmstorleken minskas till 480px ändras fontstorleken.
+        font-size: 4rem;
+      }
+    }
+  }
+
+  main { // Behållare för artikel content
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @media (max-width: 768px) {
+      margin-top: 2em;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    article {
+      flex: 0 0 60%;
+      margin-bottom: 30px;
+
+      @media (min-width: 769px) {
+        border-top: 2px solid black;
+      }
+      border-bottom: 2px solid black;
+
+      & img {
+        margin-bottom: 4.5rem;
+
+        @media (max-width: 480px) {
+          margin-bottom: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        flex: 0 0 100%;
+        border-bottom: 0;
+      }
+
+      .bread { //brödtextens styling
+        font-family: "Roboto";
+        font-size: 18px;
+        line-height: 26px;
+        color: #707070;
+        margin: 1.5rem 0 1.5rem 0;
+
+        @media (max-width: 768px) {
+          margin: 0 0 1.5rem 0;
+        }
+      }
+    }
+
+    aside { // behållare för sido content
+      flex: 0 0 30%;
+      color: #707070;
+      line-height: 26px;
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+
+      @media (max-width: 480px) {
+        flex: 0 0 100%;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-family: "Roboto condensed";
+        font-size: 18px;
+        margin: 1.5rem 0 0 0;
+      }
+
+      p {
+        font-family: Georgia;
+        font-size: 18px;
+        margin: 0 0 1.5rem 0;
+      }
+    }
+  }
+}
